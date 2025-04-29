@@ -1,0 +1,36 @@
+@startgantt
+'!theme aws-orange
+language ru
+ 
+saturday are closed
+sunday are closed
+ 
+project starts the 2025-03-25
+ 
+[Планирование и анализ требований] requires 3 days
+[Проектирование и документация системы] requires 4 days
+[Разработка и тестирование] requires 15 days
+[Исправление ошибок] requires 3 days
+[Подготовка к защите] requires 1 days
+[Зачёт] requires 1 days
+ 
+[Проектирование и документация системы] starts at [Планирование и анализ требований]'s end
+[Разработка и тестирование] starts at [Проектирование и документация системы]'s end
+[Исправление ошибок] starts at [Разработка и тестирование]'s end
+[Подготовка к защите] starts at [Исправление ошибок]'s end
+[Зачёт] starts at [Подготовка к защите]'s end
+ 
+'Стили
+ 
+[Планирование и анализ требований] is colored in red
+[Проектирование и документация системы] is colored in blue
+[Разработка и тестирование] is colored in green
+[Исправление ошибок] is colored in yellow
+[Исправление ошибок] is colored in orange
+[Подготовка к защите] is colored in purple
+[Зачёт] is colored in pink
+ 
+saturday are colored in lightgray
+sunday are colored in lightgray
+
+@endgantt

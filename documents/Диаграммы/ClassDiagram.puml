@@ -1,0 +1,136 @@
+@startuml
+skinparam class {
+    BackgroundColor White
+    ArrowColor #444444
+    BorderColor #444444
+}
+
+' Main Entities
+class User {
+    +id: String
+    +name: String
+    +email: String
+    +password: String
+    +role: String
+    +createdAt: Date
+    +updatedAt: Date
+}
+
+class Admin {
+    +permissions: String[]
+}
+
+class Teacher {
+    +subjects: String[]
+    +qualification: String
+}
+
+class Student {
+    +classId: String
+    +parentInfo: Object
+}
+
+class Class {
+    +id: String
+    +name: String
+    +teacherId: String
+    +schedule: Object
+}
+
+class Subject {
+    +id: String
+    +name: String
+    +description: String
+}
+
+class Assignment {
+    +id: String
+    +title: String
+    +description: String
+    +dueDate: Date
+    +maxScore: Number
+}
+
+class Grade {
+    +id: String
+    +studentId: String
+    +assignmentId: String
+    +score: Number
+    +comments: String
+}
+
+' Relationships
+User <|-- Admin
+User <|-- Teacher
+User <|-- Student
+
+Teacher "1" -- "n" Class
+Class "1" -- "n" Student
+Class "1" -- "n" Subject
+Subject "1" -- "n" Assignment
+Assignment "1" -- "n" Grade
+Student "1" -- "n" Grade
+
+' Service Classes
+class AuthService {
+    +login()
+    +register()
+    +logout()
+}
+
+class ClassService {
+    +createClass()
+    +updateClass()
+    +deleteClass()
+}
+
+class GradeService {
+    +addGrade()
+    +updateGrade()
+    +getGrades()
+}
+
+' Controllers
+class UserController {
+    +getUsers()
+    +createUser()
+    +updateUser()
+}
+
+class ClassController {
+    +getClasses()
+    +createClass()
+}
+
+' Frontend Components
+class AdminDashboard {
+    +render()
+    +handleUserManagement()
+}
+
+class TeacherDashboard {
+    +render()
+    +handleGradeManagement()
+}
+
+class StudentDashboard {
+    +render()
+    +viewGrades()
+}
+
+' Service Relationships
+AuthService ..> User
+ClassService ..> Class
+GradeService ..> Grade
+UserController ..> UserService
+ClassController ..> ClassService
+
+' Frontend Relationships
+AdminDashboard ..> UserController
+AdminDashboard ..> ClassController
+TeacherDashboard ..> GradeService
+TeacherDashboard ..> ClassService
+StudentDashboard ..> GradeService
+StudentDashboard ..> Assignment
+
+@enduml

@@ -28,12 +28,12 @@ if ($setting == 0) {
                 <img src="img/logo.png" alt="Logo" width="100">
             </div>
 
-    		<h3>Login</h3>
-    		<?php if (isset($_GET['error'])) { ?>
-    		<div class="alert alert-danger" role="alert">
-			  <?=$_GET['error']?>
-			</div>
-			<?php } ?>
+    		<h3>Журнал</h3>
+            <div class="alert-container">
+                <div class="alert alert-danger" role="alert" style="visibility: <?php echo isset($_GET['error']) ? 'visible' : 'hidden'; ?>; height: 60px; margin: 0;">
+                    <?php if (isset($_GET['error'])) { echo $_GET['error']; } ?>
+                </div>
+            </div>
 		  <div class="mb-3">
 		    <label class="form-label">Логин</label>
 		    <input type="text" 
@@ -52,14 +52,14 @@ if ($setting == 0) {
 		    <label class="form-label">Войти как</label>
 		    <select class="form-control"
 		            name="role">
-		    	<option value="1">Admin</option>
-		    	<option value="2">Teacher</option>
-		    	<option value="3">Student</option>
-		    	<option value="4">Registrar Office</option>
+		    	<option value="1">Админ</option>
+		    	<option value="2">Учитель</option>
+		    	<option value="3">Студент</option>
+		    	<option value="4">Бухгалтер</option>
 		    </select>
 		  </div>
 
-		  <button type="submit" class="btn btn-primary">Login</button>
+		  <button type="submit" class="btn btn-primary">Вход</button>
 		</form>
         <div class="text-center text-light">
         	Copyright &copy; <?=$setting['current_year']?> <?=$setting['school_name']?>. All rights reserved.
